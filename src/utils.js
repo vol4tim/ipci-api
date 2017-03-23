@@ -56,12 +56,6 @@ export const getBalance = function(tokenAddress, complierAddress) {
   return _.toNumber(balance);
 }
 
-// export const burn = function(tokenAddress, amount, complierAddress, accountAddress) {
-//   const complier = web3.eth.contract(abi.Complier).at(complierAddress);
-//   const tx = complier.burn(tokenAddress, amount, {from: accountAddress, gas: 100000});
-//   return tx;
-// }
-
 export const getTransactionCount = function(address) {
   return web3.eth.getTransactionCount(address);
 }

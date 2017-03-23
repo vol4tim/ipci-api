@@ -1,9 +1,0 @@
-https://medium.com/@sunnykay/docker-development-workflow-node-express-mongo-4bb3b1f7eb1e#.5d8a5a3b7
-
-cd node/sandbox/api.ipci
-docker build -t ipci/api .
-docker-compose up
-
-docker rm apiipci2_parity_1 && docker rm apiipci2_web_1 && docker rmi ipci/api
-
-
