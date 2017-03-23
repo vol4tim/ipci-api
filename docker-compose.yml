@@ -1,0 +1,15 @@
+version: "2"
+services:
+  web:
+    image: ipci/api
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    links:
+      - parity
+  parity:
+    image: ethcore/parity:v1.6.3
+    command: ["--chain", "kovan", "--jsonrpc-interface", "all", "--jsonrpc-hosts", "all"]
+    ports:
+      - "8545:8545"
