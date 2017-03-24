@@ -8,6 +8,9 @@ services:
       - "3000:3000"
     links:
       - parity
+    environment:
+      - DAO=0x23e70c0462885766b150cdbf9402bff35dddeea7
+      - PARITY=http://parity:8545
   parity:
     image: ethcore/parity:v1.6.3
     command: ["--chain", "kovan", "--jsonrpc-interface", "all", "--jsonrpc-hosts", "all"]

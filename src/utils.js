@@ -2,8 +2,9 @@ import Web3 from "web3";
 import _ from "lodash";
 import abi from "./abi";
 
+const PARITY = process.env.PARITY || 'http://parity:8545';
 export const web3 = new Web3();
-web3.setProvider(new web3.providers.HttpProvider('http://parity:8545'));
+web3.setProvider(new web3.providers.HttpProvider(PARITY));
 
 export const getProgramms = function(coreAddress) {
   const programms = [];

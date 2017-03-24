@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import _ from "lodash";
 import * as utils from "./utils";
-import config from "./config";
+
+const DAO = process.env.DAO || false;
 
 const app = express()
 
@@ -16,7 +17,7 @@ app.get('/', (req, res) => {
 
 // http://localhost:3001/programms
 app.get('/programms', (req, res) => {
-  const programms = utils.getProgramms(config.daoAddress);
+  const programms = utils.getProgramms(DAO);
   res.status(200).send({
     programms
   })
@@ -53,7 +54,7 @@ app.get('/raw/:code', (req, res) => {
   const tx = utils.raw(req.params.code);
   res.status(200);
   res.send({
-    tx: 'https://kovan.etherscan.io/tx/' + tx
+    tx: tx
   })
 })
 
