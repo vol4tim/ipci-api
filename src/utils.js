@@ -69,7 +69,21 @@ export const getBalance = function(tokenAddress, complierAddress) {
       if (e) {
         reject(e);
       }
-      resolve(r);
+      let balance = _.toNumber(r);
+      token.decimals((e, r) => {
+        if (e) {
+          reject(e);
+        }
+        const decimalsFormat = _.toNumber(r);
+        let decimals = decimalsFormat;
+        if (decimals > 0) {
+          decimals = Math.pow(10, decimals);
+        } else {
+          decimals = 1;
+        }
+        balance = (_.toNumber(balance) / decimals).toFixed(decimalsFormat);
+        resolve(balance);
+      });
     });
   });
 }
